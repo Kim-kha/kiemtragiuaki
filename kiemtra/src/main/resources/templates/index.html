@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Thông tin nhân viên</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body>
+<div class="container">
+    <h2 class="text-center mt-4">Thông tin nhân viên</h2>
+    <a href="/showNewNhanVienForm" class="btn btn-primary mb-2">Thêm nhân viên</a>
+    <table class="table table-bordered">
+        <thead>
+        <tr>
+            <th>Mã Nhân Viên</th>
+            <th>Tên Nhân Viên</th>
+            <th>Giới Tính</th>
+            <th>Nơi Sinh</th>
+            <th>Tên Phòng</th>
+            <th>Lương</th>
+            <th>Hành Động</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="nhanVien : ${listNhanViens}">
+            <td th:text="${nhanVien.maNV}"></td>
+            <td th:text="${nhanVien.tenNV}"></td>
+            <td th:text="${nhanVien.phai}"></td>
+            <td th:text="${nhanVien.noiSinh}"></td>
+            <td th:text="${nhanVien.phongBan.tenPhong}"></td>
+            <td th:text="${nhanVien.luong}"></td>
+            <td>
+                <a th:href="@{/showFormForUpdate/{id}(id=${nhanVien.maNV})}" class="btn btn-primary">Sửa</a>
+                <a th:href="@{/deleteNhanVien/{id}(id=${nhanVien.maNV})}" class="btn btn-danger">Xóa</a>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+</body>
+</html>

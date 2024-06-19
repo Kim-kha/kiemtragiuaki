@@ -1,0 +1,44 @@
+<!-- new_nhanvien.html -->
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Thêm Nhân Viên</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body>
+<div class="container">
+    <h2 class="text-center mt-4">Thêm Nhân Viên</h2>
+    <form th:action="@{/saveNhanVien}" th:object="${nhanVien}" method="post">
+        <div class="form-group">
+            <label>Mã Nhân Viên</label>
+            <input type="text" class="form-control" th:field="*{maNV}">
+        </div>
+        <div class="form-group">
+            <label>Tên Nhân Viên</label>
+            <input type="text" class="form-control" th:field="*{tenNV}">
+        </div>
+        <div class="form-group">
+            <label>Giới Tính</label>
+            <input type="text" class="form-control" th:field="*{phai}">
+        </div>
+        <div class="form-group">
+            <label>Nơi Sinh</label>
+            <input type="text" class="form-control" th:field="*{noiSinh}">
+        </div>
+        <div class="form-group">
+            <label>Phòng Ban</label>
+            <select class="form-control" th:field="*{phongBan}" th:object="${listPhongBans}" th:value="*{maPhong}">
+                <option th:value="${phongBan.maPhong}" th:text="${phongBan.tenPhong}"></option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label>Lương</label>
+            <input type="text" class="form-control" th:field="*{luong}">
+        </div>
+        <button type="submit" class="btn btn-primary">Lưu</button>
+        <a href="/nhanviens" class="btn btn-secondary">Hủy</a>
+    </form>
+</div>
+</body>
+</html>
